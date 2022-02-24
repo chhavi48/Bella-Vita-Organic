@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+         div {
+    margin: 0;
+    padding-bottom: 40px;
+}
+        
+table,
+td,
+th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table {
+  /* border-collapse: collapse; */
+  border: 1px solid #ccc;
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+  border-spacing: 0;
+    border-collapse: collapse;
+    display:table;
+    text-indent: initial;
+}
+
+
+#body tr:nth-child(2n) {
+    background: #ededed;
+}
+
+#body tr:nth-child(3n) {
+    /* border-bottom: 1px solid red; */
+    /* border-bottom: 1px solid #cccc; */
+    background:aqua;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    /* position: fixed; */
+
+    justify-content: center;
+}
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+#body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* margin: 0 auto; */
+    /* color: #000; */
+}
+#body tr td:nth-child(2){
+    text-align: center;
+    color:#4d6ba6
+
+}
+body {
+    background: 0 0;
+    font-size: 15px;
+    font-family: Lato,sans-serif;
+    line-height: 26px;
+    font-weight: 400;
+    color:chocolate;
+    letter-spacing: .07em;
+}
+
+
+th,
+td {
+  padding: 10px;
+}
+h3{
+    text-align: center;
+    padding-top: 10px;
+    font-size: 30px;
+    color:darkolivegreen
+}
+#back a{
+    text-decoration: none;
+    list-style: none;
+    padding-top:30px;
+}
+#back{
+    padding:200px 300px;
+    font-size: 30px;
+    /* background-color: teal; */
+}
+#container{
+    width:100%;
+
+    /* display:flex */
+ 
+}
+
+
+    </style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>response</title>
+</head>
+
+<body>
+    
+    <div id="container">
+        <table border="">
+            <div><span id="back"><a href="SelfieSwitch.html">Back</a></span>
+                <h3 >Your Response</h3></div>
+            
+            <tbody id = "body">
+                <tr>
+                    <td><b>First Name</b></td>
+                    <td id="td1"></td>
+                </tr>
+                <tr>
+                    <td><b>Last Name</b></td>
+                    <td id="td2"></td>
+                </tr>
+                <tr>
+                    <td><b>Email</b></td>
+                    <td id="td3"></td>
+                </tr>
+                <tr>
+                    <td><b>Phone</b></td>
+                    <td id="td4"></td>
+                </tr>
+                <tr>
+                    <td><b>Age </b></td>
+                    <td id="td5"></td>
+                </tr>
+                <tr>
+                    <td><b>Existingproduct</b></td>
+                    <td id="td6"></td>
+                </tr>
+                <tr>
+                    <td><b>Gender</b></td>
+                    <td id="td7"></td>
+                </tr>
+                <tr>
+                    <td><b>Our Product Name You Wish To Try</b></td>
+                    <td id="td8"></td>
+                </tr>
+                <tr>
+                    <td><b>Why</b></td>
+                    <td id="td9"></td>
+                </tr>
+                
+                <tr>
+                    <td><b>Upload An Image</b></td>
+                    <td id="td10"></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>
+<script>
+ var selfiearr = JSON.parse(localStorage.getItem("customerdata"))||[]
+ selfiearr.map(function(el){
+    //  var col = document.createElement("td")
+
+     var row1 = document.getElementById("td1")
+     row1.innerText=el.custfirname
+    // row1.append(el.custfirname)
+     var row2 = document.getElementById("td2")
+     row2.innerText = el.custlaname
+     var row3 = document.getElementById("td3")
+     row3.innerText= el.email
+     var row4 = document.getElementById("td4")
+     row4.innerText= el.custphone
+     var row5 = document.getElementById("td5")
+     row5.innerText= el.age
+     var row6 = document.getElementById("td6")
+     row6.innerText= el.existingproduct
+     var row7 = document.getElementById("td7")
+     row7.innerText= el.gender
+     var row8 = document.getElementById("td8")
+     row8.innerText= el.ourproduct
+     var row9 = document.getElementById("td9")
+     row9.innerText= el.textarea
+     var row10 = document.getElementById("td10")
+     row10.innerText= el.uploadimage
+     
+
+    //  col.append(row1,row2,row3,row4,row5,row6,row7,row8,row9,row10)
+    //  document.querySelector("#body").append(col)
+    //  document.querySelector("#body").append(row1,row2,row3,row4,row5,row6,row7,row8,row9,row10)
+ })
+</script>

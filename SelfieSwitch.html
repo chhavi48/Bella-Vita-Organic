@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selfie</title>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Spartan', sans-serif;
+        }
+
+        #self {
+            width: 100%;
+
+            border: none;
+
+            /* position: absolute;  */
+            background-repeat: no-repeat;
+            display: block;
+            box-sizing: border-box;
+            background-size: cover
+        }
+
+        #self img {
+            width: 100%
+        }
+
+        .content {
+            text-align: center;
+            /* margin:200px,0,; */
+            padding: 60px
+        }
+
+        .cont {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .content h2 {
+            font-family: Museo Sans, sans-serif;
+            font-size: 2em;
+        }
+
+        .selfieform {
+            /* display: flex; */
+            justify-content: center;
+            border: 2px solid grey;
+            height: 600px;
+            width: 80%;
+            margin: auto;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 3px;
+            background: linear-gradient(-135deg, #71b7e8, #9b59b1);
+
+
+        }
+
+        .selfieform form .user-details {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 80%;
+            margin: auto;
+        }
+
+        form .user-details .input-box>input {
+            width: 280px;
+            height: 40px;
+            margin: 13px 0 12px 0;
+            border-radius: 4px;
+            border: 2px solid #cccccc;
+            padding-left: 20px;
+        }
+
+        .input-box .input-select {
+            width: 280px;
+            height: 40px;
+            margin: 13px 0 12x 0;
+            border-radius: 4px;
+            border: 2px solid #cccccc;
+            padding-left: 20px;
+
+        }
+
+        form .text-area {
+            width: 580px;
+            height: 148px;
+            padding: 10px;
+            margin: 15px 0 12x 0
+        }
+
+        .text {
+            margin: 13px 0 12px 0
+        }
+
+        form .button {
+            height: 45px;
+            margin: 30px 0px
+        }
+
+        form .button input {
+            height: 100%;
+            width: 80%;
+            outline: none;
+            background: #333333;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            border-radius: 5px;
+        }
+
+        form .button input:hover {
+            background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+        }
+
+        #custom-button {
+            padding: 10px;
+            /* color:white; */
+            background-color: whitesmoke;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #upload-button {
+            display: flex;
+            justify-content: left;
+            margin-left: 70px;
+        }
+
+        #custom-button:hover {
+            background-color: aqua;
+        }
+
+        #custom-text {
+            text-align: center;
+        }
+
+        @media all and (min-width:384px) and (max-width:700px) {
+
+            .container {
+                max-width: 100%;
+            }
+
+            .selfieform {
+                max-width: 100%;
+                height: auto;
+
+            }
+
+            form .user-details .input-box>input {
+                width: 280px;
+                height: 40px;
+                margin: 13px 0 12px 0;
+                border-radius: 4px;
+                border: 2px solid #cccccc;
+            }
+
+            form .text-area {
+                width: 80%;
+                height: 100px;
+                padding: 10px;
+                margin: 15px 0 12x 0
+            }
+
+            .input-box .input-select {
+                width: 100%;
+                /* height: 30px; */
+                /* padding:10px; */
+                margin: 13px 0 12x 0;
+                border-radius: 4px;
+                border: 2px solid #cccccc;
+            }
+
+            .middle {
+                display: flex;
+                justify-content: center;
+                width: 100%
+            }
+
+            #custom-button:hover {
+                background-color: aqua;
+                cursor: pointer;
+            }
+
+            form .button input:hover {
+                background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+            }
+
+            #custom-button {
+                padding: 10px;
+                /* color:white; */
+                background-color: whitesmoke;
+                border-radius: 5px;
+                /* cursor: pointer; */
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <!-- top image -->
+        <div id="self">
+            <img
+                src="https://cdn.shopify.com/s/files/1/0054/6665/2718/files/selfie-switch-banner_d3448dcc-35ab-40a1-917e-80acd43be98e.jpg?v=1631182912">
+        </div>
+
+
+        <div class="content">
+            <h2 class="cont">Bella Vita Organic #SelfieSwitch</h2>
+            <p class="cont">If you've been wanting to try our products, but are not sure yet, Let's make it easy for
+                you.
+                Try our
+                SelfieSwitch. Its simple!</p>
+            <!-- mid image -->
+            <div class="middle">
+                <img
+                    src="https://cdn.shopify.com/s/files/1/0054/6665/2718/files/selfie-switch-steps-desktop.jpg?v=1631185173">
+            </div>
+            <p class="cont">Submit your #SelfieSwitch Form Now.</p>
+            <!-- form container -->
+            <div class="selfieform">
+                <form action="javascript:sendmail()" method="post" id="form">
+                    <div></div>
+                    <div class="user-details">
+                        <div class="input-box">
+                            <input type="text" placeholder="First name*" id="first-name" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Last name" id="last-name" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="email" placeholder="Email" id="email" onkeydown="validemail()" required>
+                            <span id="text"></span>
+                        </div>
+                        <div class="input-box">
+                            <input type="number" placeholder="Phone" id="phone" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="number" placeholder="Age" id="age">
+                        </div>
+                        <div class="input-box">
+                            <input type="text" placeholder="Existing product name that you use" id="existingproduct">
+                        </div>
+                        <!-- gender -->
+                        <div class="input-box">
+                            <select class="input-select" id="gender">
+                                <option value="Gender">Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="not mention">Rather Not To Mention</option>
+                            </select>
+                        </div>
+                        <!-- product option -->
+                        <div class="input-box">
+                            <select class="input-select" id="ourproduct">
+                                <option>Our Products Name You Wish To Try</option>
+                                <option value=""></option>
+                                <option value="21 Again Anti Ageing & Skin Glow Face Serum, 35 ml">21 Again Anti Ageing
+                                    & Skin Glow Face Serum, 35 ml</option>
+                                <option
+                                    value="Anti Acne Face Wash for Oil Control, Pimples Repair & Glow with Neem, Basil, Tea Tree & Aloe, 115g">
+                                    Anti Acne Face Wash for Oil Control, Pimples Repair & Glow with Neem, Basil, Tea
+                                    Tree & Aloe, 115g</option>
+                                <option
+                                    value="Basil Pure Essential Oil - 15ml Can be Used as Fragrance Oil, Mixed with Beauty Products, Aromatherapy and Home Candle Soap Making">
+                                    Basil Pure Essential Oil - 15ml Can be Used as Fragrance Oil, Mixed with Beauty
+                                    Products, Aromatherapy and Home Candle Soap Making</option>
+                                <option
+                                    value="Belly Drops Ayurvedic Navel Oil For Menstrual Pain. Period Pain Relief Oil - 15 Ml">
+                                    Belly Drops Ayurvedic Navel Oil For Menstrual Pain. Period Pain Relief Oil - 15 Ml
+                                </option>
+                                <option
+                                    value="C-Glow Body Wash Bar Bath Soap With Vitamin C, Coconut & Shea Butter, 150 gm">
+                                    C-Glow Body Wash Bar Bath Soap With Vitamin C, Coconut & Shea Butter, 150 gm
+                                </option>
+                                <option
+                                    value="Celeb Shine Body Shimmer Gloss Lotion For All Skin Types, Gold Shade, 50 ml">
+                                    Celeb Shine Body Shimmer Gloss Lotion For All Skin Types, Gold Shade, 50 ml</option>
+                                <option value="CEO Men Perfume Office Wear, 100 ml">CEO Men Perfume Office Wear, 100 ml
+                                </option>
+                                <option
+                                    value="Chakra Cleanse - Aura Boosting Natural Body Wash With Himalayan Rock Salt & Essential Oils, 225 ML">
+                                    Chakra Cleanse - Aura Boosting Natural Body Wash With Himalayan Rock Salt &
+                                    Essential Oils, 225 ML</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <!-- text area -->
+                    <div class="text">
+                        <textarea class="text-area" placeholder="why*" id="textarea"></textarea>
+                    </div>
+                    <!-- upload button -->
+                    <div id="upload-button">
+                        <input type="file" id="real-file" hidden="hidden">
+                        <button type="button" id="custom-button">Upload and image</button>
+                        <span id="custom-text">No file chosen</span>
+                    </div>
+
+                    <!-- submit button -->
+                    <div class="button">
+                        <input type="submit" value="Submit" id="submitbutton"
+
+                     onclick="window.location.href='response.html'" >
+
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function sendmail() {
+            var name = $("#first-name").val();
+            var email = $("#email").val();
+            var phone = $("#phone").val();
+            var existingproduct = $("#existingproduct").val();
+            var gender = $("#gender").val();
+            var ourproduct = $("#ourproduct").val();
+            var message = $("#textarea").val();
+    
+    
+            var body = "first-name: " + name + "<br>email: " + email + "<br> phone: " + phone + "<br> exisitingproduct: " + existingproduct + "<br> gender: " + gender + "<br> ourproduct:  " + ourproduct + "<br> message: " + message;
+        
+        Email.send({
+            // Host: "smtp.gmail.com",
+            // Username: "ahirwarchhatrapal2523@gmail.com",
+            // Password: "",
+            SecureToken:"05f7c565-3c95-4d1d-a83d-ee1c8d0ab05e",
+            To: 'chhatrapal25825@gmail.com',
+            From: "ahirwarchhatrapal2523@gmail.com",
+            Subject: "	Your Response Submitted For Selfie Switch From Bella Vita Organic",
+            // Body: "Thank you for your response, we will check and validate your response and update you.<br>Team Bella Vita Organic",
+            Body: body,
+        }).then(
+            message => {
+                if (message == "OK") {
+                    window.location.replace("response.html")
+                    alert("Your response has been recorded")
+                }
+                else {
+                    console.error(message)
+                    alert("plese fill correct email!")
+    
+                }
+            }
+    
+        );}
+    </script>
+
+</body>
+
+</html>
+<script>
+    // // function for resonse in same page
+    // function check() {
+    //     document.getElementById("td1").innerHTML = document.form.firstname
+    // }
+
+    // upload button
+    var realfilebtn = document.getElementById("real-file")
+    var custombtn = document.getElementById("custom-button")
+    var customtext = document.getElementById("custom-text")
+    custombtn.addEventListener("click", function () {
+        realfilebtn.click()
+    })
+    realfilebtn.addEventListener("change", function () {
+        if (realfilebtn.value) {
+            customtext.innerHTML = realfilebtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        }
+        else {
+            customtext.innerHTML = "No file choosen yet";
+        }
+    })
+    // valid email check
+
+    function validemail() {
+        var form = document.getElementById("form")
+        var email = document.getElementById("email").value
+        var text = document.getElementById("text")
+        var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (email.match(pattern)) {
+            form.classList.add("valid")
+            form.classList.add("invalid")
+            text.innerHTML = "valid email"
+            text.style.color = "#00ff00"
+
+        }
+        else {
+            form.classList.remove("valid")
+            form.classList.add("invalid")
+            text.innerHTML = ""  //enter valid email
+            text.style.color = "#ff0000"
+        }
+        if (email == "") {
+            form.classList.remove("valid")
+            form.classList.add("invalid")
+            text.innerHTML = ""
+            text.style.color = "#ff0000"
+        }
+    }
+
+    var submitbutton= document.getElementById("submitbutton")
+   var input = document.getElementById("first-name")
+   input.addEventListener("keypress",(e) =>{
+       var value = e.currentTarget.value;
+       if(value ===""){
+           submitbutton.disabled = true;
+       }
+       else{
+           submitbutton.disabled=false
+       }
+   })
+
+    //  input store
+    document.getElementById("form").addEventListener("submit", selfieform)
+    var selfiearr = JSON.parse(localStorage.getItem("customerdata")) || []
+    function selfieform() {
+        event.preventDefault()
+        var firstname = document.querySelector("#first-name").value
+        var lastname = document.querySelector("#last-name").value
+        var email = document.querySelector("#email").value
+        var phone = document.querySelector("#phone").value
+        var age = document.querySelector("#age").value
+        var existingproduct = document.querySelector("#existingproduct").value
+        var gender = document.querySelector("#gender").value
+        var ourproduct = document.querySelector("#ourproduct").value
+        var textarea = document.querySelector("#textarea").value
+        var uploadimage = document.querySelector("#real-file").value
+ 
+
+        var obj = {
+            custfirname: firstname,
+            custlaname: lastname,
+            email: email,
+            custphone: phone,
+            age: age,
+            existingproduct: existingproduct,
+            gender: gender,
+            ourproduct: ourproduct,
+            textarea: textarea,
+            uploadimage: uploadimage,
+        }
+        selfiearr.push(obj)
+        console.log(selfiearr)
+        localStorage.setItem("customerdata", JSON.stringify(selfiearr))
+    }
+</script>
