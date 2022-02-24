@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width:1000px;
+            margin-left:80px;
+        }
+        #home{
+            display:flex;
+        }
+        #cont1{
+            display:flex;
+            margin-top:30px;
+        }
+        #home>button{
+            background-color:white;
+            border: 0px;
+            font-size: 16px;
+        }
+        #forgot{
+            display:flex;
+            justify-content: space-between;
+            border-top:1px solid rgb(226, 226, 226);
+            border-bottom:1px solid rgb(204, 203, 203);
+        }
+        #main{
+            border-right:1px solid rgb(187, 184, 184);
+            width:600px;
+        }
+        #main>input{
+            width:320px;
+            height:40px;
+            margin-bottom: 20px;
+            margin-top:-5px;
+        }
+        #main2{
+            margin-left:140px;
+            text-align: center;
+        }
+        #sub{
+            width:170px;
+            height:40px;
+            border:0px;
+            color:white;
+            font-size: 17px;
+            background-color:black ;
+        }
+        #create{
+            width:250px;
+            height:50px;
+            border:0px;
+            color:white;
+            font-size: 15px;
+            margin-top:20px;
+            background-color: green;
+        }
+        p+p{
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="home">
+            <button>Home  > </button>
+            <p>Account</p>
+        </div>
+        <h2 id="h2">ACCOUNT</h2>
+        <div id="forgot">
+            <h2>RETURNING CUSTOMER</h2>
+            <h2>NEW CUSTOMER</h2>
+        </div>
+        <div id="cont1">
+            <div id="main">
+                <p>We will send you an email to reset your password.</p>
+                <p>Email</p>
+                <input type="text" id="email" placeholder="Email"/>
+                <br>
+                <button id="sub">SUBMIT</button>
+            </div>
+            <div id="main2">
+                <p>Register with us for a faster checkout,
+                    to track the status of your order and more.</p>
+                    <button id="create" onclick="window.location.href='signup.html'" >CREATE AN ACCOUNT</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var cArr=JSON.parse(localStorage.getItem("customerInfo"));
+    document.querySelector("#sub").addEventListener("click",forgotp)
+     function forgotp(){
+         var email=document.querySelector("#email").value;
+         for(var i=0; i<cArr.length; i++)
+         {
+             if(cArr[i].email==email)
+             {
+                 alert("OTP will send your email");
+             }
+         }
+     }
+
+
+document.querySelector("#sub").addEventListener("mouseenter",function(){
+        document.querySelector("#sub").style.backgroundColor="green";
+    })
+    document.querySelector("#sub").addEventListener("mouseout",function(){
+        document.querySelector("#sub").style.backgroundColor="black";
+    })
+    document.querySelector("#create").addEventListener("mouseenter",function(){
+        document.querySelector("#create").style.backgroundColor="black";
+    })
+    document.querySelector("#create").addEventListener("mouseout",function(){
+        document.querySelector("#create").style.backgroundColor="green";
+    })
+</script>

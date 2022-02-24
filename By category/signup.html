@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&family=Sen&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #container{
+            margin-left:50px;
+        }
+    #home{
+        display:flex;
+        
+    }
+    #home>button{
+        border: 0px;
+        background-color: white;
+        font-size: 16px;
+    }
+    .p1{
+        width:400px;
+        height:50px;
+        margin-bottom: 30px;;
+        font-size: 20px;
+        color:rgb(34, 4, 4);
+        border-bottom: 1px solid rgb(175, 171, 171);
+    }
+    #form>input{
+        width:300px;
+        height:40px;
+        margin-top:-5px;
+        margin-bottom: 10px;
+    }
+    br+button{
+        margin-top:20px;
+        width:200px;
+        height:40px;
+        background-color: black;
+        color:white;
+    }
+    #lastname+h3::after{
+        content:" *";
+        color:red;
+    }
+    #email+h3::after{
+        content:" *";
+        color:red;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="home">
+            <button>Home  ></button>
+            <p >Create Accoun</p>
+        </div>
+        <div class="p1">CREATE AN ACCOUNT</div>
+        <div id="form">
+            <p>Sign up for a free account at Bella Vita Organic.</p>
+            <h3>First Name</h3>
+            <input type="text" id="firstname" />
+            <h3>Last Name</h3>
+            <input type="text" id="lastname"/>
+            <h3>Your Email Address</h3>
+            <input type="text" id="email"/>
+            <h3>Your Password</h3>
+            <input type="password" id="password"/>
+            <br>
+            <button onclick="signUp()" id="create">CREATE AN ACCOUNT</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var Arrobj=[];
+    function signUp(){
+        var firstname=document.querySelector("#firstname").value;
+        var lastname=document.querySelector("#lastname").value;
+        var email=document.querySelector("#email").value;
+        var password=document.querySelector("#password").value;
+        var obj={
+            firstname:firstname,
+            lastname:lastname,
+            email:email,
+            password:password
+        }
+        Arrobj.push(obj);
+        localStorage.setItem("customerInfo",JSON.stringify(Arrobj));
+    }
+    document.querySelector("#create").addEventListener("mouseenter",function(){
+        document.querySelector("#create").style.backgroundColor="green";
+    })
+    document.querySelector("#create").addEventListener("mouseout",function(){
+        document.querySelector("#create").style.backgroundColor="black";
+    })
+
+//     font-family: 'Roboto Serif', sans-serif;
+// font-family: 'Sen', sans-serif;
+</script>
