@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+    var productArr=JSON.parse(localStorage.getItem("gotocard"));
+    //document.querySelector("#buy").addEventListener("click",function(){
+        displayProduct();
+        function displayProduct(){
+        productArr.map(function(elem){
+
+       
+        var div=document.createElement("div");
+        var image=document.createElement("img");
+        image.setAttribute("src","https://cdn.shopify.com/s/files/1/0054/6665/2718/files/Bestsellers-tag.png?v=4831700483207635039")
+        image.style.width="64px";
+        image.style.height="17px";
+        var diveimage=document.createElement("div");
+        diveimage.append(image);
+        diveimage.style.marginRight="20px";
+        diveimage.style.marginTop="15px";
+        var div1=document.createElement("div");
+        var para=document.createElement("p");
+        para.innerText=elem.pname
+        var para2=document.createElement("h4");
+        para2.innerText="IS ADDED TO YOUR SHOPPING CART.";
+        para2.style.color="green";
+        var btn1=document.createElement("button");
+        btn1.innerText="GO TO CART";
+        btn1.style.color="white";
+        btn1.style.backgroundColor="black";
+        btn1.style.width="148px";
+        btn1.style.height="37px";
+        btn1.addEventListener("click",function(){
+             
+             window.location.href = "goToCard.html";
+        });
+        var btn2=document.createElement("button");
+        btn2.innerText="CHECK OUT";
+        btn2.style.color="white";
+        btn2.style.backgroundColor="black";
+        btn2.style.margin="20px";
+        btn2.style.marginLeft="30px";
+        btn2.style.width="148px";
+        btn2.style.height="37px";
+        var divebtn=document.createElement("div");
+        divebtn.append(btn1,btn2);
+        div1.append(para,para2,divebtn);
+        div.append(diveimage,div1);
+        div.style.width="500px";
+        div.style.display="flex";
+        div.style.backgroundColor="white";
+        div.style.margin="auto";
+        document.querySelector("body").append(div);
+    });
+    
+    }
+  //})
+</script>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allproduct</title>
+    <style>
+        #container{
+            width: 75%;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            float: right;
+            margin-right: 50px;
+            
+
+        }
+        #container>div{
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            overflow: -moz-hidden-unscrollable;
+            
+        }
+        /* #container>img{
+            width: 100%;
+        } */
+        #pic{
+            width: 100%;
+            
+        }
+        .price{
+            display: flex;
+            justify-content: space-around;
+             align-items: center;
+            font-size: 18px;
+
+        }
+        #para{
+         font-weight: 500;
+         font-size: 15px;
+        }
+        @media all and (min-width:850px) and (max-width:1000px){
+            
+            #container{
+                width:1000px;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            float: right;
+            margin-right: 50px;
+        }
+        }
+        @media all and (min-width:381px) and (max-width:700px){
+            
+            #container{
+            width:700px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            float: right;
+            margin-right: 50px;
+        }
+        }
+        @media all and (min-width:50px) and (max-width:380px){
+            
+            #container{
+                width:380px;
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: auto;
+            gap: 20px;
+            float: right;
+            margin-right: 50px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script src="product.js"></script>
+</body>
+</html>
+
+<script>
+
+
+var buyArr=JSON.parse(localStorage.getItem("selectProduct")) || [];
+console.log(buyArr);
+var allproductdata=JSON.parse(localStorage.getItem("productData")) || [];
+console.log(allproductdata);
+productDisplay();
+function productDisplay(){
+allproductdata.map(function(elem,index,array){
+    var innerdiv=document.createElement("div");
+    var div=document.createElement("div");
+    var image=document.createElement("img");
+    image.setAttribute("src",elem.img)
+    image.setAttribute("id","pic")
+    div.append(image);
+    var btn=document.createElement("button");
+    btn.style.width="100%";
+    btn.style.height="40px";
+    btn.style.backgroundColor="black";
+    btn.style.color="white";
+    btn.innerText="BUY NOW";
+    
+
+    var pname=document.createElement("p");
+    pname.setAttribute("id","para")
+    pname.innerText=elem.pname;
+
+    var div2=document.createElement("div")
+    div2.setAttribute("class","price")
+
+    var offprice=document.createElement("s");
+    offprice.innerText= "Rs." + elem.offprice;
+    
+    var price=document.createElement("p");
+    price.innerText="Rs." + elem.price;
+     
+    btn.addEventListener("click", function () {
+        var cartArr=[];
+        cartArr.push(elem);
+        console.log(cartArr);
+        localStorage.setItem("gotocard",JSON.stringify(cartArr));
+        addToCart(elem);
+        window.location.href = "buynow.html";
+      });
+    div2.append(offprice,price)
+
+    innerdiv.append(div,btn,pname,div2);
+    document.querySelector("#container").append(innerdiv);
+});
+function addToCart(elem){
+       elem.quant=1;
+       console.log(elem);
+       buyArr.push(elem);
+       console.log(buyArr);
+       localStorage.setItem("selectProduct",JSON.stringify(buyArr));
+     }
+    }
+
+
+</script>
