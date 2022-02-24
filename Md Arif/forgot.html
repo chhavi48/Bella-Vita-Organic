@@ -1,0 +1,170 @@
++<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&family=Sen&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #container{
+            width:965px;
+            height:430px;
+            margin:60px;
+            border-bottom: 1px solid rgb(163, 159, 159);
+            margin-bottom:30px;
+        }
+        .main1{
+            width:965px;
+            display:flex;
+            border-top: 1px solid rgb(190, 187, 187);
+            border-bottom: 1px solid rgb(199, 195, 195);
+            padding:15px 0px 15px 10px;
+            margin-bottom:30px;
+            box-shadow: rgba(208, 208, 212, 0.25) 0px 30px 60px -12px inset, rgba(240, 238, 238, 0.3) 0px 18px 36px -18px inset;
+        }
+        .main1>div{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 500px;
+            color:rgb(65, 60, 60);           
+            
+        }
+        .main2{
+            margin-left:70px;
+        }
+        .main3{
+            margin-left:320px;
+        }
+        #container2{
+            width:965px;
+            display:flex;
+        }
+        
+        .p2{
+            font-size:17px;
+            margin-left:60px;
+            font-family:sans-serif;
+            margin-top:30px;
+        }
+        #return{
+            width:480px;
+            border-right: 2px solid rgb(187, 182, 182);
+            
+        }
+        #create{
+            margin-left:60px;
+            width:250px;
+            height:50px;
+            border:0px;
+            background-color: rgb(107, 168, 15);
+            color:white;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+        .p1{
+            font-size: 15px;
+            margin-right:60px;
+            font-family:sans-serif;
+            margin-top:30px;
+        }
+        
+        .account{
+            width:965px;
+            margin-top:-20px;
+        }
+        #new{
+            text-align:center;
+        }
+       
+       .p1+p{
+           font-size: 20px;
+           margin-top:40px;
+           margin-bottom:10px;
+       }
+       input{
+           width:340px;
+           height:40px;
+           font-size: 15px;
+           margin-bottom:40px;
+       }
+       #submit{
+           padding:12px 35px 12px 35px;
+
+           height:30px;
+           background-color: black;
+           color:white;
+       }
+       .home{
+            border-width: 0px;
+            background-color: white;
+            margin-bottom: 20px;
+            margin-right:-8px;
+            font-weight: 700px;
+            color:rgb(156, 150, 150);
+            font-family:sans-serif;
+        }
+        .home+.home{
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="home1">
+            <button class="home" onclick="window.location.href='index.html'">Home</button>
+            <button class="home">>  Account</button>
+        </div>
+        <div class="account">
+            <h2>ACCOUNT </h2>
+        </div>
+        <div class="main1">
+            <div class="main2">RETURNING CUSTOMER</div>
+            <div class="main3">NEW CUSTOMER</div>
+        </div>
+        <div id="container2">
+            <div id="return" class="main">
+                <p class="p1">We will send you an email to reset your password.</p>
+                <p>Email</p>
+                <input type="text" id="email" placeholder="Email"/><br>
+                <buttton id="submit">SUBMIT</buttton>
+            </div>
+            <div id="new" class="main">
+                  <p class="p2">Register with us for a faster checkout,
+                    to track the status of your order and more.</p>
+                    <button id="create" onclick="window.location.href='signup.html'">CREATE ACCOUNT</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("#submit").addEventListener("click",reset);
+    var customerArr=JSON.parse(localStorage.getItem("customerInfo"));
+    function reset(){
+        var email=document.querySelector("#email").value;
+        for(var i=0; i<customerArr.length; i++)
+        {
+            if(customerArr[i].email==email){
+
+            alert("otp send to your registered email");
+        }
+        }
+        
+    }
+    document.querySelector("#submit").addEventListener("mouseover",function(){
+        document.querySelector("#submit").style.backgroundColor = "rgb(41, 172, 41)";
+    });
+    document.querySelector("#submit").addEventListener("mouseout",function(){
+        document.querySelector("#submit").style.backgroundColor = "black";
+    });
+    document.querySelector("#create").addEventListener("mouseover",function(){
+        document.querySelector("#create").style.backgroundColor = "black";
+    });
+    document.querySelector("#create").addEventListener("mouseout",function(){
+        document.querySelector("#create").style.backgroundColor = "rgb(41, 172, 41)";
+    });
+</script>

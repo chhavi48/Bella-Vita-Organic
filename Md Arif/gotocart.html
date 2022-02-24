@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&family=Sen&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #container{
+            margin:auto;
+            margin-left:200px;
+            margin-right:250px;
+        }
+        #home1{
+            margin-left:50px;
+        }
+        .home{
+            border-width: 0px;
+            background-color: white;
+            margin-bottom: 20px;
+            margin-right:-8px;
+            font-weight: 700px;
+            color:rgb(156, 150, 150);
+            font-family:sans-serif;
+        }
+        .home+.home{
+            font-weight: bold;
+        }
+        .mycart{
+            display:flex;
+            justify-content: space-between;
+            margin-left:50px;
+        }
+        .home2{
+            height:30px;
+            margin-top:23px;
+        }
+        #main{
+            display:flex;
+        }
+        .product>div{
+            width:600px;
+            margin-left:50px;
+            margin-top:50px;
+            box-shadow: rgba(58, 56, 56, 0.2) 0px 2px 8px 0px;
+            padding:15px;
+        }
+        .order>div{
+            width:200px;
+            margin-top:50px;
+            margin-left:60px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding:15px;
+            text-align: center;
+            
+            
+        }
+        @media all and (min-width:381px) and (max-width:800px){
+            
+            #container{
+            margin:auto;
+            margin-left:0px;
+            margin-right:30px;
+        }
+        .product>div{
+            width:400px;
+        }
+        }
+        .total{
+            display:flex;
+            justify-content: space-between;
+        }
+        .quantity{
+            width:50px;
+            height:40px;
+            border-top: 1px solid rgb(131, 128, 128);
+            border-bottom: 1px solid rgb(131, 128, 128);
+            font-size: 25px;
+            text-align: center;
+            padding-top:5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <div id="home1">
+        <button class="home" onclick="window.location.href='index.html'">Home</button>
+        <button class="home">>  Create Account</button>
+    </div>
+    <div class="mycart">
+        <h2>MY CART</h2>
+        <button class="home2" onclick="window.location.href='index.html'">Continue Shopping  ></button>
+    </div>
+    <div id="main">
+        <div class="product">
+            <div>PRODUCT</div>
+        </div>
+        <div class="order">
+            <div>ORDER SUMMARY</div>
+            <div class="total">
+                <h2>Total:</h2>
+                <h2 id="totals"></h2>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    var selectArr=JSON.parse(localStorage.getItem("selectProduct"));
+    console.log(selectArr);
+    select(selectArr);
+    function select(selectArr){
+        //document.querySelector(".promain").innerHTML=null;
+        selectArr.map(function(elem,index){
+            var image=document.createElement("img");
+            image.setAttribute("src",elem.img)
+            image.style.width="120px";
+            image.style.height="120px";
+            var div1=document.createElement("div");
+            div1.append(image);
+            var div2=document.createElement("div");
+            var para=document.createElement("p");
+            para.innerText=elem.pname;
+            var price=document.createElement("p");
+            price.innerText= "Rs."+elem.price;
+            price.style.marginTop="-10px";
+            price.style.fontSize="20px";
+            price.style.fontWeight="bold";
+            var div3=document.createElement("div");
+            var para2=document.createElement("p");
+            para2.innerText="Quantity:";
+            var btn1=document.createElement("button");
+            btn1.innerText="-";
+            btn1.style.fontSize="30px";
+            btn1.style.width="40px";
+            btn1.style.backgroundColor="white";
+            btn1.style.borderWidth="1px";
+            
+            var div4=document.createElement("div");
+            div4.setAttribute("class","quantity");
+            
+            var btn2=document.createElement("button");
+            btn2.innerText="+";
+            btn2.style.fontSize="30px";
+            btn2.style.width="40px";
+            btn2.style.backgroundColor="white";
+            btn2.style.borderWidth="1px";
+            div4.innerText=elem.quant;
+            var add=1;
+            btn2.addEventListener("click",function(){
+                add++;
+               div4.innerText=add;
+                increaseQuant(index)
+               
+            });
+            btn1.addEventListener("click",function(){  
+                             
+                if(add>=2)
+                {
+                    add--;
+                    div4.innerText=add;
+                    decreaseQuant(index);
+                }
+                
+                
+            });
+            var divmain=document.createElement("div");
+            divmain.append(btn1,div4,btn2);
+            divmain.style.display="flex";
+            div2.append(para,price,para2,divmain);
+            var div=document.createElement("div");
+            div.setAttribute("class","promain");
+            div.append(div1,div2);
+            div.style.display="flex";
+            document.querySelector(".product").append(div);
+        });
+    }
+    // var total = selectArr.reduce(function(acc,elem,index){
+    //     return acc + elem.price;
+    // },0)
+    // document.querySelector("#totals").innerText= "Rs."+total;
+
+
+    function increaseQuant(index){
+    selectArr[index].quant++;
+    //localStorage.setItem("selectProduct",JSON.stringify(selectArr));
+    console.log(selectArr);
+    //select(selectArr);
+    showTotal();
+    
+  }
+  function decreaseQuant(index){
+    selectArr[index].quant--;
+   //localStorage.setItem("selectProduct",JSON.stringify(selectArr));
+    //select(selectArr);
+    if(selectArr[index].quant>=1)
+    {
+        showTotal();
+     }
+    
+    
+  }
+  function showTotal(){
+    var total=selectArr.reduce(function(acc,itm,index){
+    return acc+((itm.price)*(itm.quant));
+  },0);
+  document.querySelector("#totals").textContent="Rs."+total;
+  }
+//   function increasequant(index)
+//   {
+//     document.querySelector("h1").textContent=index+1;
+//   }
+  
+   function checkout(){
+     alert(" Thank you for purchasing");
+   }
+</script>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&family=Sen&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #container{
+            margin-left:50px;
+        }
+        #form>input{
+            width:250px;
+            height:40px;
+            margin-top:-5px;
+        }
+        #form>button{
+            margin-top:20px;
+            width:257px;
+            height:40px;
+            
+            border:0px;
+            font-size: 16px;
+        }
+        #login{
+            color:white;
+            background-color: black;
+        }
+        #forgot{
+            background-color: white;
+        }
+        #create{
+            color: white;
+            background-color: green;;
+        }
+        h4::after{
+        content:" *";
+        color:red;
+    }
+    .home{
+        width:260px;
+        margin-top:40px;
+        padding-bottom: 20px;
+        font-size: 20px;
+        color:black;
+        border-bottom: .5px solid rgb(212, 208, 208);
+        font-family: sans-serif;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+       <div class="home">CUSTOMER LOGIN</div>
+       <div id="form">
+         <h4>Email Address</h4>
+         <input type="text" id="email" placeholder="Email Address"/>
+         <h4>Password</h4>
+         <input type="password" id="password" placeholder="Password"/>
+         <br>
+         <button id="login">LOGIN</button>
+         <br>
+
+         <button id="forgot">Forgot your password?</button>
+         <br>
+         <button id="create" onclick="window.location.href='signup.html'" >CREATE AN ACCOUNT</button>
+         
+       </div>
+    </div>
+</body>
+</html>
+<script>
+      var cArr=JSON.parse(localStorage.getItem("customerInfo"));
+
+       document.querySelector("#login").addEventListener("click",customerlogin);
+        function customerlogin(){
+            var email=document.querySelector("#email").value;
+            var password=document.querySelector("#password").value;
+            for(var i=0; i<cArr.length; i++)
+            {
+                if(cArr[i].email==email && cArr[i].password==password)
+                {
+                    alert("login success");
+                }
+                else{
+                    alert("invalid");
+                }
+            }
+        }
+
+
+
+
+
+
+
+document.querySelector("#login").addEventListener("mouseenter",function(){
+        document.querySelector("#login").style.backgroundColor="green";
+    })
+    document.querySelector("#login").addEventListener("mouseout",function(){
+        document.querySelector("#login").style.backgroundColor="black";
+    })
+    document.querySelector("#create").addEventListener("mouseenter",function(){
+        document.querySelector("#create").style.backgroundColor="black";
+    })
+    document.querySelector("#create").addEventListener("mouseout",function(){
+        document.querySelector("#create").style.backgroundColor="green";
+    })
+
+</script>
