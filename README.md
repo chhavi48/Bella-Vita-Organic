@@ -15,7 +15,7 @@ Bella Vita Organic, Inc. is an Indian Health care Organic store. Founded in 2005
 - JAVASCRIPT
 - Browser LocalStorage for Frontend
 
-- [Blog Link]()
+- [Blog Link](https://medium.com/@sichhavi48/bella-vita-organic-website-clone-81fb2834a1f)
 
 
 ## Features 
